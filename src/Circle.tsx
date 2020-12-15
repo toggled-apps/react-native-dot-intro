@@ -1,44 +1,36 @@
 import * as React from "react";
-import { TouchableOpacity, Animated, StatusBar, StyleSheet } from "react-native";
+import {
+  TouchableOpacity,
+  Animated,
+  StatusBar,
+  StyleSheet,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 const AnimatedAntDesign = Animated.createAnimatedComponent(AntDesign);
 
-const colors = [
-  {
-    initialBgColor: "goldenrod",
-    bgColor: "#222",
-    nextBgColor: "#222",
-  },
-  {
-    initialBgColor: "goldenrod",
-    bgColor: "#222",
-    nextBgColor: "yellowgreen",
-  },
-  {
-    initialBgColor: "#222",
-    bgColor: "yellowgreen",
-    nextBgColor: "midnightblue",
-  },
-  {
-    initialBgColor: "yellowgreen",
-    bgColor: "midnightblue",
-    nextBgColor: "turquoise",
-  },
-  {
-    initialBgColor: "midnightblue",
-    bgColor: "turquoise",
-    nextBgColor: "goldenrod",
-  },
-  {
-    initialBgColor: "turquoise",
-    bgColor: "goldenrod",
-    nextBgColor: "#222",
-  },
-];
+type Props ={
+  onPress: () => void,
+  initialBgColor: string,
+  bgColor: string,
+  nextBgColor: string,
+  duration: number,
+  textDuration: number,
+  quotes: {author: string, quote: string}[],
+  animatedValue: any,
+  animatedValue2: any
 
-const Circle = ({ onPress, index, quotes, animatedValue, animatedValue2 }) => {
-  const { initialBgColor, nextBgColor, bgColor } = colors[index];
+}
+
+const Circle = ({
+  onPress,
+  initialBgColor,
+  nextBgColor,
+  bgColor,
+  quotes,
+  animatedValue,
+  animatedValue2,
+} : Props) => {
   const inputRange = [0, 0.001, 0.5, 0.501, 1];
   const backgroundColor = animatedValue2.interpolate({
     inputRange,
