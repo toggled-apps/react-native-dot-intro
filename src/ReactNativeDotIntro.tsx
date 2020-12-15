@@ -1,15 +1,13 @@
 import * as React from "react";
 import {
   StatusBar,
-  Dimensions,
   Animated,
   Text,
   View,
   StyleSheet,
+  useWindowDimensions
 } from "react-native";
 import Circle from "./Circle";
-
-const { width } = Dimensions.get("window");
 
 type Props ={
   colors: {initialBgColor: string, bgColor: string, nextBgColor: string}[],
@@ -20,6 +18,8 @@ type Props ={
 
 const ReactNativeDotIntro = (props: Props) => {
   const { colors, quotes, duration, textDuration } = props;
+  
+  const width = useWindowDimensions().width;
 
   const animatedValue = React.useRef(new Animated.Value(0)).current;
   const animatedValue2 = React.useRef(new Animated.Value(0)).current;

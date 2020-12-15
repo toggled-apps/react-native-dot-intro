@@ -1,3 +1,5 @@
+.DS_Store
+
 # Logs
 *.log
 npm-debug.log
@@ -7,6 +9,3 @@ node_modules
 
 # Runtime data
 tmp
-
-# Examples (If applicable to your project)
-examples
