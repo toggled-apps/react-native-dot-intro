@@ -6,15 +6,17 @@ This react native module is intended to provide a beautifully animated onboardin
 
 ## Props
 
-|Name|Type|Default|Description|
+|Name|Type|Default|Required|Description|
 |---|---|---|---|---|
-|colors|object|None, required|   |
-|duration|number|1000|   |
-|imageWidth|number|125|   |
-|imageHeight|number|125|   |
-|textDuration|number|800|   |
-|titles|array|None, required|   |
-
+|colors|object|None|True|An array of objects `{ arrowColor: "#000B92", textColor: "white", initialBgColor: "#000B92", bgColor: "#F576AA", nextBgColor: "#F576AA"}` a mixture of hexcodes and color names may be used see [React Native Default Colors](https://reactnative.dev/docs/colors).<br/><br/>initialBgColor -> Big background of the element<br/>bgColor -> initial circle bg color that will be the next slide initial BG Color<br/>nextBgColor -> next circle bg color after we fully transition the circle and this will be small again</br>prev bgColor === next initialBgColor<br/>prev nextBgColor === next bgColor|
+|contents|object|None|True|An array of objects `{image: { uri: "https://reactnative.dev/img/tiny_logo.png" }, text: "For the things we have to learn before we can do them, we learn by doing them.\n\n___ Aristotle, The Nicomachean Ethics"}`. Image object may contain a uri or you may pass a local image using `require('../path/to/image')`.|
+|duration|number|1000|False|Duration of the transition animation|
+|imageWidth|number|125|False|Width of the image|
+|imageHeight|number|125|False|Height of image|
+|onEnd|Function|None|True|A function that is called when the app intro component is finished or you the user has opted to skip (if enabled)|
+|textDuration|number|800|False|Duration of the text transition animation|
+|titles|array|None|False|Name of your App or alternatively the title of this section of your app|
+|skip|boolean|true|False|Boolean to enable or disable the skip button. If enabled and pressed onEnd function will be called.|
 
 ## 🚀 Run the example
 The provided example uses [expo](https://expo.io/). Navigate to the "example" directory and run:
