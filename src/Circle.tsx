@@ -9,28 +9,25 @@ import { AntDesign } from "@expo/vector-icons";
 
 const AnimatedAntDesign = Animated.createAnimatedComponent(AntDesign);
 
-type Props ={
-  onPress: () => void,
-  initialBgColor: string,
-  bgColor: string,
-  nextBgColor: string,
-  duration: number,
-  textDuration: number,
-  quotes: {author: string, quote: string}[],
-  animatedValue: any,
-  animatedValue2: any
-
-}
+type Props = {
+  animatedValue: any;
+  animatedValue2: any;
+  arrowColor: string;
+  bgColor: string;
+  initialBgColor: string;
+  onPress: () => void;
+  nextBgColor: string;
+};
 
 const Circle = ({
-  onPress,
-  initialBgColor,
-  nextBgColor,
-  bgColor,
-  quotes,
   animatedValue,
   animatedValue2,
-} : Props) => {
+  arrowColor,
+  bgColor,
+  initialBgColor,
+  onPress,
+  nextBgColor,
+}: Props) => {
   const inputRange = [0, 0.001, 0.5, 0.501, 1];
   const backgroundColor = animatedValue2.interpolate({
     inputRange,
@@ -120,7 +117,7 @@ const Circle = ({
               },
             ]}
           >
-            <AnimatedAntDesign name="arrowright" size={28} color={"white"} />
+            <AnimatedAntDesign name="arrowright" size={28} color={arrowColor} />
           </Animated.View>
         </TouchableOpacity>
       </Animated.View>
@@ -138,14 +135,6 @@ const styles = StyleSheet.create({
     paddingTop: StatusBar.currentHeight,
     padding: 8,
     paddingBottom: 50,
-  },
-  paragraph: {
-    margin: 12,
-    fontSize: 24,
-    // fontWeight: 'bold',
-    textAlign: "center",
-    fontFamily: "Menlo",
-    color: "white",
   },
   button: {
     height: 100,

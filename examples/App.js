@@ -1,98 +1,68 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import RNDotIntro from "react-native-dot-intro";
+
+/* 
+initialBgColor -> Big background of the element
+bgColor -> initial circle bg color that will be the next slide initial BG Color
+nextBgColor -> next circle bg color after we fully transition the circle and this will be small again
+prev bgColor === next initialBgColor
+prev nextBgColor === next bgColor
+*/
 
 const colors = [
   {
-    initialBgColor: "goldenrod",
-    bgColor: "#222",
-    nextBgColor: "#222",
+    arrowColor: "#000B92",
+    textColor: "white",
+    initialBgColor: "#000B92",
+    bgColor: "#F576AA",
+    nextBgColor: "#F576AA",
   },
   {
-    initialBgColor: "goldenrod",
-    bgColor: "#222",
-    nextBgColor: "yellowgreen",
+    arrowColor: "#F576AA",
+    textColor: "white",
+    initialBgColor: "#000B92",
+    bgColor: "#F576AA",
+    nextBgColor: "white",
   },
   {
-    initialBgColor: "#222",
-    bgColor: "yellowgreen",
-    nextBgColor: "midnightblue",
+    arrowColor: "#F576AA",
+    textColor: "black",
+    initialBgColor: "#F576AA",
+    bgColor: "white",
+    nextBgColor: "#000B92",
   },
-  // {
-  //   initialBgColor: "yellowgreen",
-  //   bgColor: "midnightblue",
-  //   nextBgColor: "turquoise",
-  // },
-  // {
-  //   initialBgColor: "midnightblue",
-  //   bgColor: "turquoise",
-  //   nextBgColor: "goldenrod",
-  // },
-  // {
-  //   initialBgColor: "turquoise",
-  //   bgColor: "goldenrod",
-  //   nextBgColor: "#222",
-  // },
 ];
-const duration = 1000;
-const textDuration = 1000 * 0.8;
-const quotes = [
+
+const contents = [
   {
-    quote:
-      "For the things we have to learn before we can do them, we learn by doing them.",
-    author: "Aristotle, The Nicomachean Ethics",
+    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    text:
+      "For the things we have to learn before we can do them, we learn by doing them.\n\n___ Aristotle, The Nicomachean Ethics",
   },
   {
-    quote: "The fastest way to build an app.",
-    author: "The Expo Team",
+    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    text: "The fastest way to build an app.\n\n___ The Expo Team",
   },
   {
-    quote:
-      "The greatest glory in living lies not in never falling, but in rising every time we fall.",
-    author: "Nelson Mandela",
+    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    text:
+      "The greatest glory in living lies not in never falling, but in rising every time we fall.\n\n__ Nelson Mandela",
   },
-  // {
-  //   quote: "The way to get started is to quit talking and begin doing.",
-  //   author: "Walt Disney",
-  // },
-  // {
-  //   quote:
-  //     "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
-  //   author: "Steve Jobs",
-  // },
-  // {
-  //   quote:
-  //     "If life were predictable it would cease to be life, and be without flavor.",
-  //   author: "Eleanor Roosevelt",
-  // },
-  // {
-  //   quote:
-  //     "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
-  //   author: "Oprah Winfrey",
-  // },
-  // {
-  //   quote:
-  //     "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
-  //   author: "James Cameron",
-  // },
-  // {
-  //   quote: "Life is what happens when you're busy making other plans.",
-  //   author: "John Lennon",
-  // },
 ];
 
 export default function App() {
   return (
     <View
       style={{
-        flex: 1
+        flex: 1,
       }}
     >
       <RNDotIntro
         colors={colors}
-        duration={duration}
-        textDuration={textDuration}
-        quotes={quotes}
+        contents={contents}
+        onEnd={() => {console.log("Handle onEnd e.g. navigate to app")}}
+        title="Dot Intro"
       />
     </View>
   );

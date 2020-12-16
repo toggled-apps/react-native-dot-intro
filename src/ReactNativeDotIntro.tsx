@@ -1,30 +1,52 @@
 import * as React from "react";
 import {
-  StatusBar,
   Animated,
+  Image,
+  Pressable,
   Text,
-  View,
+  SafeAreaView,
+  StatusBar,
   StyleSheet,
-  useWindowDimensions
+  useWindowDimensions,
+  View,
 } from "react-native";
 import Circle from "./Circle";
 
-type Props ={
-  colors: {initialBgColor: string, bgColor: string, nextBgColor: string}[],
-  duration: number,
-  textDuration: number,
-  quotes: {author: string, quote: string}[],
+interface Props {
+  colors: {
+    arrowColor: string;
+    initialBgColor: string;
+    bgColor: string;
+    nextBgColor: string;
+    textColor: string;
+  }[];
+  contents: { text: string; image: any }[];
+  duration?: number;
+  imageWidth?: number;
+  imageHeight?: number;
+  onEnd: () => void;
+  textDuration?: number;
+  title: string;
+  skip: boolean;
 }
 
-const ReactNativeDotIntro = (props: Props) => {
-  const { colors, quotes, duration, textDuration } = props;
-  
+const ReactNativeDotIntro = ({
+  colors,
+  contents,
+  duration = 1000,
+  imageWidth = 125,
+  imageHeight = 125,
+  onEnd,
+  textDuration = 800,
+  title = "Dot Intro",
+  skip = true,
+}: Props) => {
   const width = useWindowDimensions().width;
 
   const animatedValue = React.useRef(new Animated.Value(0)).current;
   const animatedValue2 = React.useRef(new Animated.Value(0)).current;
   const sliderAnimatedValue = React.useRef(new Animated.Value(0)).current;
-  const inputRange = [...Array(quotes.length).keys()];
+  const inputRange = [...Array(contents.length).keys()];
   const [index, setIndex] = React.useState(0);
 
   const animate = (i: number) =>
@@ -47,22 +69,26 @@ const ReactNativeDotIntro = (props: Props) => {
     ]);
 
   const onPress = () => {
-    animatedValue.setValue(0);
-    animatedValue2.setValue(0);
-    animate((index + 1) % colors.length).start();
-    setIndex((index + 1) % colors.length);
+    if (index + 1 < colors.length) {
+      animatedValue.setValue(0);
+      animatedValue2.setValue(0);
+      animate((index + 1) % colors.length).start();
+      setIndex((index + 1) % colors.length);
+    } else {
+      onEnd();
+    }
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "flex-start", paddingTop: 100 }}>
+    <SafeAreaView
+      style={{ flex: 1, justifyContent: "flex-start", paddingTop: 12 }}
+    >
       <StatusBar hidden />
       <Circle
+        arrowColor={colors[index].arrowColor}
         onPress={onPress}
-        quotes={quotes}
         animatedValue={animatedValue}
         animatedValue2={animatedValue2}
-        duration={duration}
-        textDuration={textDuration}
         initialBgColor={colors[index].initialBgColor}
         nextBgColor={colors[index].nextBgColor}
         bgColor={colors[index].bgColor}
@@ -74,47 +100,68 @@ const ReactNativeDotIntro = (props: Props) => {
             {
               translateX: sliderAnimatedValue.interpolate({
                 inputRange,
-                outputRange: quotes.map((_, i) => -i * width * 2),
+                outputRange: contents.map((_, i) => -i * width * 2),
               }),
             },
           ],
           opacity: sliderAnimatedValue.interpolate({
-            inputRange: [...Array(quotes.length * 2 + 1).keys()].map(
+            inputRange: [...Array(contents.length * 2 + 1).keys()].map(
               (i) => i / 2
             ),
-            outputRange: [...Array(quotes.length * 2 + 1).keys()].map((i) =>
+            outputRange: [...Array(contents.length * 2 + 1).keys()].map((i) =>
               i % 2 === 0 ? 1 : 0
             ),
           }),
         }}
       >
-        {quotes.slice(0, colors.length).map(({ quote, author }, i) => {
+        {contents.slice(0, colors.length).map((content, i) => {
           return (
             <View style={{ paddingRight: width, width: width * 2 }} key={i}>
-              <Text
-                style={[styles.paragraph, { color: colors[i].nextBgColor }]}
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  paddingHorizontal: 24,
+                  paddingTop: 12,
+                  paddingBottom: 50,
+                }}
               >
-                {quote}
-              </Text>
-              <Text
-                style={[
-                  styles.paragraph,
-                  {
-                    color: colors[i].nextBgColor,
-                    fontSize: 10,
-                    fontWeight: "normal",
-                    textAlign: "right",
-                    opacity: 0.8,
-                  },
-                ]}
-              >
-                ______ {author}
+                {title !== "" ? (
+                  <Text
+                    style={[styles.headerText, { color: colors[i].textColor }]}
+                  >
+                    {title}
+                  </Text>
+                ) : null}
+                {skip ? (
+                  <Pressable onPress={() => onEnd()}>
+                    <Text
+                      style={[
+                        styles.headerText,
+                        { color: colors[i].textColor },
+                      ]}
+                    >
+                      Skip
+                    </Text>
+                  </Pressable>
+                ) : null}
+              </View>
+              <Image
+                style={{
+                  width: imageWidth,
+                  height: imageHeight,
+                  alignSelf: "center",
+                }}
+                source={content.image}
+              />
+              <Text style={[styles.paragraph, { color: colors[i].textColor }]}>
+                {content.text}
               </Text>
             </View>
           );
         })}
       </Animated.View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -130,24 +177,18 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   paragraph: {
-    margin: 12,
+    paddingHorizontal: 24,
+    paddingTop: 75,
+    paddingBottom: 50,
     fontSize: 24,
-    // fontWeight: 'bold',
+    fontWeight: "bold",
     textAlign: "center",
-    fontFamily: "Menlo",
+  },
+  headerText: {
+    margin: 12,
+    fontSize: 14,
+    fontWeight: "bold",
+    textAlign: "center",
     color: "white",
-  },
-  button: {
-    height: 100,
-    width: 100,
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  circle: {
-    backgroundColor: "turquoise",
-    width: 100,
-    height: 100,
-    borderRadius: 50,
   },
 });
