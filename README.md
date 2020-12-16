@@ -6,12 +6,19 @@ This react native module is intended to provide a beautifully animated onboardin
 
 ## Usage
 
+```
+yarn add @toggled-apps/react-native-dot-intro
+
+or 
+
+npm install @toggled-apps/react-native-dot-intro
+```
 
 ### Example Usage
 ```
 import * as React from "react";
 import { View } from "react-native";
-import RNDotIntro from "react-native-dot-intro";
+import RNDotIntro from "@toggled-apps/react-native-dot-intro";
 
 const colors = [{
     arrowColor: "#000B92",
