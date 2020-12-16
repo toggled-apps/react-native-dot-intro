@@ -123,7 +123,7 @@ const ReactNativeDotIntro = ({
                   justifyContent: "space-between",
                   paddingHorizontal: 24,
                   paddingTop: 12,
-                  paddingBottom: 50,
+                  paddingBottom: 75,
                 }}
               >
                 {title !== "" ? (
@@ -151,6 +151,7 @@ const ReactNativeDotIntro = ({
                   width: imageWidth,
                   height: imageHeight,
                   alignSelf: "center",
+                  borderRadius: 50,
                 }}
                 source={content.image}
               />

@@ -36,16 +36,16 @@ const colors = [
 
 const contents = [
   {
-    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    image: { uri: "https://images.unsplash.com/photo-1486246772917-8947d0f7f541?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" },
     text:
       "For the things we have to learn before we can do them, we learn by doing them.\n\n___ Aristotle, The Nicomachean Ethics",
   },
   {
-    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    image: { uri: "https://images.unsplash.com/photo-1585543923016-c6ac4a980ff0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=904&q=80" },
     text: "The fastest way to build an app.\n\n___ The Expo Team",
   },
   {
-    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    image: { uri: "https://images.unsplash.com/photo-1570475735025-6cd1cd5c779d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" },
     text:
       "The greatest glory in living lies not in never falling, but in rising every time we fall.\n\n__ Nelson Mandela",
   },
@@ -61,6 +61,8 @@ export default function App() {
       <RNDotIntro
         colors={colors}
         contents={contents}
+        imageWidth={200}
+        imageHeight={200}
         onEnd={() => {console.log("Handle onEnd e.g. navigate to app")}}
         title="Dot Intro"
       />

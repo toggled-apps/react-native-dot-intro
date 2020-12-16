@@ -2,6 +2,8 @@
 
 This react native module is intended to provide a beautifully animated onboarding screen that you can customise and use in your own projects.
 
+![Alt Text](./assets/react-native-dot-intro.gif)
+
 ## Usage
 
 ## Props
