@@ -6,6 +6,47 @@ This react native module is intended to provide a beautifully animated onboardin
 
 ## Usage
 
+
+### Example Usage
+```
+import * as React from "react";
+import { View } from "react-native";
+import RNDotIntro from "react-native-dot-intro";
+
+const colors = [{
+    arrowColor: "#000B92",
+    textColor: "white",
+    initialBgColor: "#000B92",
+    bgColor: "#F576AA",
+    nextBgColor: "#F576AA",
+  },];
+
+const contents = [{
+    image: { uri: "https://reactnative.dev/img/tiny_logo.png" },
+    text: "Welcome to my app",
+  },];
+
+export default function App() {
+  return (
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
+      <RNDotIntro
+        colors={colors}
+        contents={contents}
+        imageWidth={200}
+        imageHeight={200}
+        onEnd={() => {console.log("Handle onEnd e.g. navigate to app")}}
+        title="Dot Intro"
+      />
+    </View>
+  );
+}
+
+```
+
 ## Props
 
 |Name|Type|Default|Required|Description|

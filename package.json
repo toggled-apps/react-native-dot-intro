@@ -1,13 +1,32 @@
 {
   "name": "react-native-dot-intro",
   "version": "1.0.0",
-  "description": "",
+  "description": "Beautifully animated onboarding screen that you can customise and use in your own projects.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toggled-apps/react-native-dot-intro"
+  },
+  "keywords": [
+    "swiper",
+    "App",
+    "Intro",
+    "ios",
+    "android",
+    "react-component",
+    "react-native",
+    "slider",
+    "Animation"
+  ],
+  "author": "Toggled Apps",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toggled-apps/react-native-dot-intro/issues"
+  },
+  "homepage": "https://github.com/toggled-apps/react-native-dot-intro",
   "peerDependencies": {
     "react": "17.0.1",
     "react-native": "0.63.4"
