@@ -125,7 +125,6 @@ const ReactNativeDotIntro = ({
                   justifyContent: "space-between",
                   paddingHorizontal: 24,
                   paddingTop: 12,
-                  paddingBottom: 75,
                 }}
               >
                 <Text
@@ -146,24 +145,28 @@ const ReactNativeDotIntro = ({
                   </Pressable>
                 )}
               </View>
-              {content.image && (
-                <Image
-                  style={{
-                    width: imageWidth,
-                    height: imageHeight,
-                    alignSelf: "center",
-                    borderRadius: imageBorderRadius,
-                  }}
-                  source={content.image}
-                />
-              )}
-              {content.text && (
-                <Text
-                  style={[styles.paragraph, { color: colors[i].textColor }]}
-                >
-                  {content.text}
-                </Text>
-              )}
+              <View
+                style={styles.content}
+              >
+                {content.image && (
+                  <Image
+                    style={{
+                      width: imageWidth,
+                      height: imageHeight,
+                      alignSelf: "center",
+                      borderRadius: imageBorderRadius,
+                    }}
+                    source={content.image}
+                  />
+                )}
+                {content.text && (
+                  <Text
+                    style={[styles.paragraph, { color: colors[i].textColor }]}
+                  >
+                    {content.text}
+                  </Text>
+                )}
+              </View>
             </View>
           );
         })}
@@ -175,13 +178,10 @@ const ReactNativeDotIntro = ({
 export default ReactNativeDotIntro;
 
 const styles = StyleSheet.create({
-  paragraph: {
-    paddingHorizontal: 24,
+  content: {
+    justifyContent: "space-evenly",
     paddingTop: 75,
     paddingBottom: 50,
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
   },
   headerText: {
     margin: 12,
@@ -189,5 +189,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: "white",
+  },
+  paragraph: {
+    paddingHorizontal: 24,
+    paddingTop: 24,
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
