@@ -58,9 +58,10 @@ export default function App() {
 
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
-|colors|object|Required|None||An array of objects `{ arrowColor: "#000B92", textColor: "white", initialBgColor: "#000B92", bgColor: "#F576AA", nextBgColor: "#F576AA"}` a mixture of hexcodes and color names may be used see [React Native Default Colors](https://reactnative.dev/docs/colors).<br/><br/>initialBgColor -> Big background of the element<br/>bgColor -> initial circle bg color that will be the next slide initial BG Color<br/>nextBgColor -> next circle bg color after we fully transition the circle and this will be small again</br>prev bgColor === next initialBgColor<br/>prev nextBgColor === next bgColor|
-|contents|object|Required|None|An array of objects<br/>`{image: { uri: "https://reactnative.dev/img/tiny_logo.png" }, text: "Welcome to my app"}`.<br/>Image object may contain a uri or you may pass a local image using<br/>`{image: require('../path/to/image'), text: "Welcome to my app"}`.
+|colors|object|Required|None|An array of objects `{ arrowColor: "#000B92", textColor: "white", initialBgColor: "#000B92", bgColor: "#F576AA", nextBgColor: "#F576AA"}` a mixture of hexcodes and color names may be used see [React Native Default Colors](https://reactnative.dev/docs/colors).<br/><br/>initialBgColor -> Big background of the element<br/>bgColor -> initial circle bg color that will be the next slide initial BG Color<br/>nextBgColor -> next circle bg color after we fully transition the circle and this will be small again</br>prev bgColor === next initialBgColor<br/>prev nextBgColor === next bgColor`.<br/><br/>Note: the length of the colors array must match the length of the contents array.|
+|contents|object|Required|None|An array of objects<br/>`{image: { uri: "https://reactnative.dev/img/tiny_logo.png" }, text: "Welcome to my app"}`.<br/>Image object may contain a uri or you may pass a local image using<br/>`{image: require('../path/to/image'), text: "Welcome to my app"}`.<br/><br/>The `image` object is optional and `text` can be ""<br/><br/>Note: the length of the colors array must match the length of the contents array.|
 |duration|number|Optional|1000|Duration of the transition animation.|
+|imageBorderRadius|number|Optional|50|Border radius of image.|
 |imageWidth|number|Optional|125|Width of the image.|
 |imageHeight|number|Optional|125|Height of image.|
 |onEnd|Function|Required|None|A function that is called when the app intro component is finished or you the user has opted to skip (if enabled).|
@@ -80,7 +81,7 @@ Credit goes to Catalin Miron for providing both an insightful [tutorial](https:/
 
 Credit also goes to Cuberto for making this concept avaliable. The dribble can be found [here](https://dribbble.com/shots/6654320-Animated-Onboarding-Screens)
 
-## Contributions
+## 🤟 Contributions
 This project is mantained by Toggled LTD (@toggled-apps).
 
 We welcome all contributions to the upkeep and further development of this module! Feel free to raise PRs and Issues 😇

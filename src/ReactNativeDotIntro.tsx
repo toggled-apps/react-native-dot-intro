@@ -22,6 +22,7 @@ interface Props {
   }[];
   contents: { text: string; image: any }[];
   duration?: number;
+  imageBorderRadius: number;
   imageWidth?: number;
   imageHeight?: number;
   onEnd: () => void;
@@ -34,6 +35,7 @@ const ReactNativeDotIntro = ({
   colors,
   contents,
   duration = 1000,
+  imageBorderRadius = 50,
   imageWidth = 125,
   imageHeight = 125,
   onEnd,
@@ -131,7 +133,7 @@ const ReactNativeDotIntro = ({
                 >
                   {title}
                 </Text>
-                {skip ? (
+                {skip && (
                   <Pressable onPress={() => onEnd()}>
                     <Text
                       style={[
@@ -142,20 +144,26 @@ const ReactNativeDotIntro = ({
                       Skip
                     </Text>
                   </Pressable>
-                ) : null}
+                )}
               </View>
-              <Image
-                style={{
-                  width: imageWidth,
-                  height: imageHeight,
-                  alignSelf: "center",
-                  borderRadius: 50,
-                }}
-                source={content.image}
-              />
-              <Text style={[styles.paragraph, { color: colors[i].textColor }]}>
-                {content.text}
-              </Text>
+              {content.image && (
+                <Image
+                  style={{
+                    width: imageWidth,
+                    height: imageHeight,
+                    alignSelf: "center",
+                    borderRadius: imageBorderRadius,
+                  }}
+                  source={content.image}
+                />
+              )}
+              {content.text && (
+                <Text
+                  style={[styles.paragraph, { color: colors[i].textColor }]}
+                >
+                  {content.text}
+                </Text>
+              )}
             </View>
           );
         })}
