@@ -1,6 +1,6 @@
 {
   "name": "@toggled-apps/react-native-dot-intro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beautifully animated onboarding screen that you can customise and use in your own projects.",
   "main": "index.js",
   "scripts": {

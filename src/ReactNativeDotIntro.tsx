@@ -10,7 +10,7 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import Circle from "./Circle";
+import AnimatedCircleButton from "./AnimatedCircleButton";
 
 interface Props {
   colors: {
@@ -38,7 +38,7 @@ const ReactNativeDotIntro = ({
   imageHeight = 125,
   onEnd,
   textDuration = 800,
-  title = "Dot Intro",
+  title = "",
   skip = true,
 }: Props) => {
   const width = useWindowDimensions().width;
@@ -84,7 +84,7 @@ const ReactNativeDotIntro = ({
       style={{ flex: 1, justifyContent: "flex-start", paddingTop: 12 }}
     >
       <StatusBar hidden />
-      <Circle
+      <AnimatedCircleButton
         arrowColor={colors[index].arrowColor}
         onPress={onPress}
         animatedValue={animatedValue}
@@ -126,13 +126,11 @@ const ReactNativeDotIntro = ({
                   paddingBottom: 75,
                 }}
               >
-                {title !== "" ? (
-                  <Text
-                    style={[styles.headerText, { color: colors[i].textColor }]}
-                  >
-                    {title}
-                  </Text>
-                ) : null}
+                <Text
+                  style={[styles.headerText, { color: colors[i].textColor }]}
+                >
+                  {title}
+                </Text>
                 {skip ? (
                   <Pressable onPress={() => onEnd()}>
                     <Text
@@ -169,14 +167,6 @@ const ReactNativeDotIntro = ({
 export default ReactNativeDotIntro;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-    paddingTop: StatusBar.currentHeight,
-    padding: 8,
-    paddingBottom: 50,
-  },
   paragraph: {
     paddingHorizontal: 24,
     paddingTop: 75,

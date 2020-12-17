@@ -59,13 +59,13 @@ export default function App() {
 |Name|Type|Required|Default|Description|
 |---|---|---|---|---|
 |colors|object|Required|None||An array of objects `{ arrowColor: "#000B92", textColor: "white", initialBgColor: "#000B92", bgColor: "#F576AA", nextBgColor: "#F576AA"}` a mixture of hexcodes and color names may be used see [React Native Default Colors](https://reactnative.dev/docs/colors).<br/><br/>initialBgColor -> Big background of the element<br/>bgColor -> initial circle bg color that will be the next slide initial BG Color<br/>nextBgColor -> next circle bg color after we fully transition the circle and this will be small again</br>prev bgColor === next initialBgColor<br/>prev nextBgColor === next bgColor|
-|contents|object|Required|None|An array of objects `{image: { uri: "https://reactnative.dev/img/tiny_logo.png" }, text: "For the things we have to learn before we can do them, we learn by doing them.\n\n___ Aristotle, The Nicomachean Ethics"}`. Image object may contain a uri or you may pass a local image using `require('../path/to/image')`.|
-|duration|number|Optional|1000|Duration of the transition animation|
-|imageWidth|number|Optional|125|Width of the image|
-|imageHeight|number|Optional|125|Height of image|
-|onEnd|Function|Required|None|A function that is called when the app intro component is finished or you the user has opted to skip (if enabled)|
-|textDuration|number|Optional|800|Duration of the text transition animation|
-|titles|array|Optional|"Dot Intro"|Name of your App or alternatively the title of this section of your app|
+|contents|object|Required|None|An array of objects<br/>`{image: { uri: "https://reactnative.dev/img/tiny_logo.png" }, text: "Welcome to my app"}`.<br/>Image object may contain a uri or you may pass a local image using<br/>`{image: require('../path/to/image'), text: "Welcome to my app"}`.
+|duration|number|Optional|1000|Duration of the transition animation.|
+|imageWidth|number|Optional|125|Width of the image.|
+|imageHeight|number|Optional|125|Height of image.|
+|onEnd|Function|Required|None|A function that is called when the app intro component is finished or you the user has opted to skip (if enabled).|
+|textDuration|number|Optional|800|Duration of the text transition animation.|
+|titles|array|Optional|""|Name of your App or alternatively the title of this section of your app.|
 |skip|boolean|Optional|true|Boolean to enable or disable the skip button. If enabled and pressed onEnd function will be called.|
 
 ## 🚀 Run the example
@@ -81,7 +81,9 @@ Credit goes to Catalin Miron for providing both an insightful [tutorial](https:/
 Credit also goes to Cuberto for making this concept avaliable. The dribble can be found [here](https://dribbble.com/shots/6654320-Animated-Onboarding-Screens)
 
 ## Contributions
-This project is mantained by Toggled LTD. We welcome all contributions to the upkeep and further development of this code! Please do raise PRs and Issues 😇
+This project is mantained by Toggled LTD (@toggled-apps).
+
+We welcome all contributions to the upkeep and further development of this module! Feel free to raise PRs and Issues 😇
 
 ## MIT License
 Copyright 2020 Toggled LTD

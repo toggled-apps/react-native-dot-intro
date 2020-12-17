@@ -83,7 +83,7 @@ const Circle = ({
               {
                 translateX: animatedValue2.interpolate({
                   inputRange: [0, 0.5, 1],
-                  outputRange: ["0%", "50%", "0%"],
+                  outputRange: [0, 50, 0], // Circle button has both width and height set to 100px you can input values. Percentages don't seem to work on android
                 }),
               },
             ],
@@ -117,7 +117,7 @@ const Circle = ({
               },
             ]}
           >
-            <AnimatedAntDesign name="arrowright" size={28} color={arrowColor} />
+            <AnimatedAntDesign name="right" size={28} color={arrowColor} />
           </Animated.View>
         </TouchableOpacity>
       </Animated.View>
