@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     paddingHorizontal: 24,
-    paddingTop: 24,
+    paddingTop: 50,
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
