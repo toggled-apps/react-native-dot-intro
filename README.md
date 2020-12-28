@@ -70,7 +70,11 @@ export default function App() {
 |skip|boolean|Optional|true|Boolean to enable or disable the skip button. If enabled and pressed onEnd function will be called.|
 
 ## 🚀 Run the example
-The provided example uses [expo](https://expo.io/). Navigate to the "examples" directory and run:
+The provided example uses [expo](https://expo.io/).
+
+Snack: https://expo.io/@toggled-apps/react-native-dot-intro
+
+Build locally: Navigate to the "examples" directory and run:
 
 - Install packages with `yarn` or `npm install`.
 - Run `yarn ios` or `yarn android` or `npm run ios` or `npm run android`.

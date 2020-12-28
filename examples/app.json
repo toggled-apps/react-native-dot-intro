@@ -1,10 +1,9 @@
 {
   "expo": {
-    "name": "react-native-product-transition",
-    "slug": "react-native-product-transition",
+    "name": "react-native-dot-intro",
+    "slug": "react-native-dot-intro",
     "owner": "toggled-apps",
-    "description": "This react native project is intended to provide an example of a beautifully animated product list to details transition that you can customise and use in your own projects.",
-    "version": "1.0.0",
+    "description": "Beautifully animated onboarding screen that you can customise and use in your own projects.",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
