@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import AnimatedCircleButton from "./AnimatedCircleButton";
 
+
 interface Props {
   colors: {
     arrowColor: string;
