@@ -21,7 +21,7 @@ interface Props {
     textColor: string;
     iconName: string;
   }[];
-  contents: { text: string; image: any }[];
+  contents: { text: string; image: any, component: any }[];
   duration?: number;
   imageBorderRadius: number;
   imageWidth?: number;
@@ -184,6 +184,10 @@ const ReactNativeDotIntro: React.FC<Props> = (props) => {
                     ]}
                     source={content.image}
                   />
+                )}
+
+                {content.component && (
+                  content.component
                 )}
                 {content.text && (
                   <Text
