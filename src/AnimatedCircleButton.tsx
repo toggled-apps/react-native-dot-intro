@@ -5,9 +5,9 @@ import {
   StatusBar,
   StyleSheet,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
-const AnimatedAntDesign = Animated.createAnimatedComponent(AntDesign);
+const AnimatedAntDesign = Animated.createAnimatedComponent(Feather);
 
 type Props = {
   animatedValue: any;
@@ -17,6 +17,7 @@ type Props = {
   initialBgColor: string;
   onPress: () => void;
   nextBgColor: string;
+  iconName: string;
 };
 
 const Circle = ({
@@ -27,6 +28,7 @@ const Circle = ({
   initialBgColor,
   onPress,
   nextBgColor,
+  iconName,
 }: Props) => {
   const inputRange = [0, 0.001, 0.5, 0.501, 1];
   const backgroundColor = animatedValue2.interpolate({
@@ -117,7 +119,7 @@ const Circle = ({
               },
             ]}
           >
-            <AnimatedAntDesign name="right" size={28} color={arrowColor} />
+            <AnimatedAntDesign name={iconName} size={45} color={arrowColor} />
           </Animated.View>
         </TouchableOpacity>
       </Animated.View>
