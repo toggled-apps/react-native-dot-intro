@@ -92,7 +92,7 @@ const Circle = ({
           },
         ]}
       >
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity>
           <Animated.View
             style={[
               styles.button,
